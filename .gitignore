@@ -1,0 +1,30 @@
+# Terraform working directory
+.terraform/
+
+# Terraform state files
+*.tfstate
+*.tfstate.*
+
+# Crash logs
+crash.log
+
+# Terraform variable files (often contain secrets)
+*.tfvars
+*.tfvars.json
+
+# Terraform lock info (optional - see note below)
+# .terraform.lock.hcl
+
+# Sensitive files
+*.pem
+*.key
+
+# Environment variables
+.env
+
+# IDE settings
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
