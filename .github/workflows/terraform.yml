@@ -10,11 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Download your code from GitHub
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # Step 2: Configure AWS credentials (from GitHub Secrets)
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -22,18 +20,14 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      # Step 3: Install Terraform
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
 
-      # Step 4: Initialize Terraform (download providers)
+      # ✅ THIS IS WHERE YOUR FIX GOES
       - name: Terraform Init
         run: terraform init
+        working-directory: terraform
 
-      # Step 5: Check formatting (optional but good)
-      - name: Terraform Format Check
-        run: terraform fmt -check
-
-      # Step 6: Apply Terraform (deploy infrastructure)
       - name: Terraform Apply
         run: terraform apply -auto-approve
+        working-directory: terraform
