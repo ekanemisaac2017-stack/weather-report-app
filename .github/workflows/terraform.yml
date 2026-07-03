@@ -24,10 +24,15 @@ jobs:
         uses: hashicorp/setup-terraform@v3
 
       # ✅ THIS IS WHERE YOUR FIX GOES
+      
       - name: Terraform Init
-        run: terraform init
-        working-directory: terraform
+  working-directory: terraform
+  run: terraform init
+
+      - name: Terraform Plan
+  working-directory: terraform
+  run: terraform plan
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve
-        working-directory: terraform
+  working-directory: terraform
+  run: terraform apply -auto-approve
